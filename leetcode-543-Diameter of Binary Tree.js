@@ -19,11 +19,8 @@
  * @param {TreeNode} root
  * @return {number}
  */
- function TreeNode(val) {
-      this.val = val;
-      this.left = this.right = null;
- }
-var root=new TreeNode(123)
+// 运行错误，本地可以，线上不行，不知所以
+
 var diameterOfBinaryTree = function(root) {
     var max={'val':0};
     maxDepth(root,max);
@@ -41,5 +38,3 @@ function maxDepth(node,max){
         return Math.max(left,right)+1;
     }
 }
-
-console.log(diameterOfBinaryTree(null))
