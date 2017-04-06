@@ -19,22 +19,27 @@
  * @param {TreeNode} root
  * @return {number}
  */
-
-
-var max=0;
+ function TreeNode(val) {
+      this.val = val;
+      this.left = this.right = null;
+ }
+var root=new TreeNode(123)
 var diameterOfBinaryTree = function(root) {
-    maxDepth(root);
-    return max;
+    var max={'val':0};
+    maxDepth(root,max);
+    return max.val;
 };
 
-function maxDepth(node){
+function maxDepth(node,max){
     if(node === null)
         return 0;
     else{
-        var left = maxDepth(node.left);
-        var right = maxDepth(node.right);
-        max = Math.max(max,left+right) ;
+        var left = maxDepth(node.left,max.val);
+        var right = maxDepth(node.right,max.val);
+        max.val = Math.max(max.val,left+right) ;
 
         return Math.max(left,right)+1;
     }
 }
+
+console.log(diameterOfBinaryTree(null))
